@@ -65,21 +65,21 @@ export const uz: Messages = {
     saryChelekText:
       'Qo‘riqxona eko-turi: 7 ta relikt ko‘l kaskadi, yong‘oq o‘rmonlari, kater sayri.',
     saryChelekDuration: 'Eko-tur',
-    saryChelekPrice: 'Dasturini ko‘rish',
+    saryChelekPrice: 'Dastur',
     almatyTitle: 'Olmaota: Eko / Siti / Grand',
     almatyDates: '3 kun / 2 tun',
     almatySpots: 'Dasturini ko‘rish',
     almatyText:
       'Medeu, Shymbulak, Oy-Qarag‘ay, Chorin va Qora kanyonlar, Kolsay va Kaindi — yo‘ltanlamaslarda.',
     almatyDuration: '3 kun / 2 tun',
-    almatyPrice: 'Dasturini ko‘rish',
+    almatyPrice: 'Dastur',
     tajikistanTitle: 'Marguzor & Iskandarkul',
     tajikistanDates: 'Eko-tur / Fon tog‘lari',
     tajikistanSpots: 'Dasturini ko‘rish',
     tajikistanText:
       'Marguzorning yetti rangli ko‘li, afsonaviy Iskandarkul, «Fon Niagara» sharsharasi.',
     tajikistanDuration: 'Eko-tur',
-    tajikistanPrice: 'Dasturini ko‘rish',
+    tajikistanPrice: 'Dastur',
     kamchatkaTitle: 'Kel-Suu & Tyan-Shan',
     kamchatkaText:
       'Qoyali kanyondagi yashirin zumrad ko‘l, an’anaviy yurtlarda tunash, chegara zonasi.',
@@ -116,14 +116,10 @@ export const uz: Messages = {
     badgeEntrepreneur: 'Turkiston & Olmaota',
     badgeBlogger: 'Marguzor & Iskandarkul',
     badgeInvestor: 'Xorgos',
-    albertRole:
-      'Turkistonga 2 kunlik, keyin Olmaota Grand-tur — tashkilot a’lo! Aniq tayming, yaxshi mehmonxonalar va 24/7 g‘amxo‘r gidlar.',
-    nikolayRole:
-      'Fon tog‘lari abadiy zabt etdi. Tayyorlangan jiplarda dovonlar oson o‘tdi, firuza ko‘llar esa sof hayrat!',
-    mikhailRole:
-      'MSPS Xorgos safari kutganimizni oqladi. Ajoyib logistika, chegaradan tez o‘tdik, xaridlarda yordam berishdi.',
-    konstantinRole:
-      'Toshkentdan “hammasi qo‘shilgan” servis: transfer, mehmonxona, ruxsatnomalar va hamrohlik — ortiqcha ovora yo‘q.',
+    albertRole: 'Turkiston va Olmaota Grand-tur — tashkilot a’lo, gidlar 24/7.',
+    nikolayRole: 'Fon tog‘lari va firuza ko‘llar — sof hayrat, jiplar oson o‘tdi.',
+    mikhailRole: 'Xorgos kutganimizni oqladi: tez chegara va xaridlarda yordam.',
+    konstantinRole: 'Toshkentdan “hammasi qo‘shilgan” — ortiqcha ovora yo‘q.',
   },
   formats: {
     title: 'Har qanday ritm va maqsad uchun sayohatlar',
@@ -137,7 +133,13 @@ export const uz: Messages = {
     sportText:
       'Qorako‘l yonbag‘irlaridagi yangi qor va Mang‘istov hamda Kel-Suu off-road drive ixlosmandlari uchun.',
   },
-  partners: { title: 'Hamkorlar' },
+  partners: {
+    title: 'Nima uchun bizni tanlashadi',
+    item1: 'Markaziy Osiyo va boshqa yo‘nalishlar bo‘ylab mualliflik turlar',
+    item2: 'Ekskursiya dasturlari va faol dam olish',
+    item3: 'Har bir mijozga individual yondashuv',
+    item4: 'Qulay sayohatlarni tashkil etish',
+  },
   press: {
     title: 'Siti, shopping va qishki sport',
     forbesTitle: 'Bishkek: Siti & Shop-tur — poytaxt, Alo-Archa, «Dordoy» va «Madina» bozorlari.',
@@ -163,6 +165,29 @@ export const uz: Messages = {
     modalTitle: 'Ariza qabul qilindi',
     modalText: 'Tez orada katalog yuboramiz va bog‘lanamiz.',
     modalClose: 'Yopish',
+  },
+  booking: {
+    eyebrow: 'Bron qilish',
+    title: 'Turga ariza qoldirish',
+    subtitle: 'Ma’lumotlarni to‘ldiring — Telegram orqali joylarni tasdiqlaymiz.',
+    tourLabel: 'Tanlangan tur',
+    firstNameLabel: 'Ism',
+    firstNamePlaceholder: 'Ismingiz',
+    lastNameLabel: 'Familiya',
+    lastNamePlaceholder: 'Familiyangiz',
+    phoneLabel: 'Telefon (Telegram / WhatsApp)',
+    phonePlaceholder: '+998 __ ___ __ __',
+    seatsLabel: 'Nechta joy bron qilasiz',
+    seatsPlaceholder: '1',
+    submit: 'Arizani yuborish',
+    cardCta: 'Ariza',
+    sending: 'Yuborilmoqda…',
+    invalid: 'Ism, familiya, telefon va joylar sonini tekshiring',
+    sendError: 'Yuborib bo‘lmadi. Keyinroq urinib ko‘ring.',
+    disclaimer: 'Ariza Telegram botga yuboriladi. Spam yo‘q.',
+    successTitle: 'Ariza qabul qilindi',
+    successText: 'Bron qabul qilindi — tez orada bog‘lanamiz.',
+    close: 'Yopish',
   },
   finalCta: {
     title: 'Markaziy Osiyo ulug‘vorligini Tian Shan Travel bilan oching',

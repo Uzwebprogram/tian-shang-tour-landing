@@ -65,21 +65,21 @@ export const en: Messages = {
     saryChelekText:
       'Protected eco tour: a cascade of 7 relic lakes, walnut forests, and a boat ride.',
     saryChelekDuration: 'Eco tour',
-    saryChelekPrice: 'View program',
+    saryChelekPrice: 'Program',
     almatyTitle: 'Almaty: Eco / City / Grand',
     almatyDates: '3 days / 2 nights',
     almatySpots: 'View program',
     almatyText:
       'Medeu, Shymbulak, Oi-Karagai, Charyn and Black Canyon, Kolsai and Kaindy by off-roader.',
     almatyDuration: '3 days / 2 nights',
-    almatyPrice: 'View program',
+    almatyPrice: 'Program',
     tajikistanTitle: 'Marguzor & Iskanderkul',
     tajikistanDates: 'Eco tour / Fan Mountains',
     tajikistanSpots: 'View program',
     tajikistanText:
       'Seven colored Marguzor lakes, legendary Iskanderkul, and the “Fan Niagara” waterfall.',
     tajikistanDuration: 'Eco tour',
-    tajikistanPrice: 'View program',
+    tajikistanPrice: 'Program',
     kamchatkaTitle: 'Kel-Suu & Tian Shan',
     kamchatkaText:
       'A secret emerald lake in a rocky canyon, yurt overnight, and a border zone.',
@@ -116,14 +116,10 @@ export const en: Messages = {
     badgeEntrepreneur: 'Turkestan & Almaty',
     badgeBlogger: 'Marguzor & Iskanderkul',
     badgeInvestor: 'Khorgos',
-    albertRole:
-      'We did 2 days in Turkestan, then a Grand tour to Almaty — top-tier organization! Clear timing, great hotels, and guides who care 24/7.',
-    nikolayRole:
-      'The Fan Mountains won us forever. Mountain passes in prepared jeeps felt easy, and the turquoise lakes were pure delight!',
-    mikhailRole:
-      'The ICBC Khorgos trip fully met expectations. Excellent logistics, a quick border crossing, and help with every purchase.',
-    konstantinRole:
-      'All-inclusive service from Tashkent: transfers, hotels, permits, and support — without the fuss.',
+    albertRole: 'Turkestan and the Almaty Grand tour — top organization, guides 24/7.',
+    nikolayRole: 'Fan Mountains and turquoise lakes — pure delight, easy jeep rides.',
+    mikhailRole: 'Khorgos met expectations: quick border and help with shopping.',
+    konstantinRole: 'All-inclusive from Tashkent — no fuss.',
   },
   formats: {
     title: 'Travel for every pace and purpose',
@@ -137,7 +133,13 @@ export const en: Messages = {
     sportText:
       'For powder on Karakol slopes and real off-road drive across Mangystau and Kel-Suu.',
   },
-  partners: { title: 'Partners' },
+  partners: {
+    title: 'Why travelers choose us',
+    item1: 'Curated tours across Central Asia and beyond',
+    item2: 'Excursion programs and active recreation',
+    item3: 'An individual approach for every guest',
+    item4: 'Comfortable travel, fully organized',
+  },
   press: {
     title: 'City, shopping, and winter sport',
     forbesTitle: 'Bishkek: City & Shop tour — capital overview, Ala-Archa, Dordoi and Madina markets.',
@@ -163,6 +165,29 @@ export const en: Messages = {
     modalTitle: 'Request received',
     modalText: 'We will send the catalog and get in touch shortly.',
     modalClose: 'Close',
+  },
+  booking: {
+    eyebrow: 'Booking',
+    title: 'Request this tour',
+    subtitle: 'Fill in your details — we will confirm seats via Telegram.',
+    tourLabel: 'Selected tour',
+    firstNameLabel: 'First name',
+    firstNamePlaceholder: 'Your first name',
+    lastNameLabel: 'Last name',
+    lastNamePlaceholder: 'Your last name',
+    phoneLabel: 'Phone (Telegram / WhatsApp)',
+    phonePlaceholder: '+998 __ ___ __ __',
+    seatsLabel: 'How many seats to book',
+    seatsPlaceholder: '1',
+    submit: 'Send request',
+    cardCta: 'Book',
+    sending: 'Sending…',
+    invalid: 'Check first name, last name, phone, and seats',
+    sendError: 'Could not send. Please try again later.',
+    disclaimer: 'The request goes to our Telegram bot. No spam.',
+    successTitle: 'Request received',
+    successText: 'We got your booking and will contact you soon.',
+    close: 'Close',
   },
   finalCta: {
     title: 'Discover the grandeur of Central Asia with Tian Shan Travel',

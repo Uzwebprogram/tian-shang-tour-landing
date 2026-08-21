@@ -6,6 +6,7 @@ import {
   almatyGallery,
   tajikistanGallery,
 } from '@/pages/landing/model/catalog';
+import { TourBookingModal } from '@/pages/landing/ui/TourBookingModal';
 import { TourGalleryModal } from '@/pages/landing/ui/TourGalleryModal';
 import { useI18n } from '@/shared/i18n/I18nProvider';
 import { Button } from '@/shared/ui/Button';
@@ -24,7 +25,8 @@ type SectionTour = {
 
 export function ToursSection() {
   const { t } = useI18n();
-  const [activeTour, setActiveTour] = useState<SectionTour | null>(null);
+  const [galleryTour, setGalleryTour] = useState<SectionTour | null>(null);
+  const [bookingTour, setBookingTour] = useState<SectionTour | null>(null);
 
   const tours: SectionTour[] = [
     {
@@ -121,14 +123,7 @@ export function ToursSection() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {tours.map((tour, index) => (
             <FadeIn key={tour.id} delay={index * 0.05}>
-              <button
-                type="button"
-                onClick={() => {
-                  if (tour.gallery.length) setActiveTour(tour);
-                  else window.location.hash = 'subscribe';
-                }}
-                className="group relative block h-[420px] w-full overflow-hidden rounded-3xl border border-brand-line bg-brand-card text-left sm:h-[460px]"
-              >
+              <article className="group relative h-[420px] overflow-hidden rounded-3xl border border-brand-line bg-brand-card sm:h-[460px]">
                 <img
                   src={tour.image}
                   alt=""
@@ -140,13 +135,36 @@ export function ToursSection() {
                   <CalendarDays className="h-2.5 w-2.5 text-brand-mint" />
                   {tour.duration}
                 </span>
-                <div className="absolute inset-x-0 bottom-0 space-y-3 p-6 sm:p-8">
+                <div className="absolute inset-x-0 bottom-0 space-y-3 p-5 sm:space-y-4 sm:p-6">
                   <h3 className="font-serif text-xl font-semibold leading-snug text-white sm:text-2xl">
                     {tour.title}
                   </h3>
-                  <p className="text-sm font-medium text-white/90 sm:text-base">{tour.price}</p>
+                  <div
+                    className={
+                      tour.gallery.length > 0
+                        ? 'grid grid-cols-2 gap-2'
+                        : 'grid grid-cols-1'
+                    }
+                  >
+                    {tour.gallery.length > 0 ? (
+                      <button
+                        type="button"
+                        onClick={() => setGalleryTour(tour)}
+                        className="min-w-0 truncate rounded-lg border border-white/20 bg-white/10 px-2.5 py-2.5 text-center text-xs font-medium text-white backdrop-blur-sm transition hover:bg-white/20 sm:text-sm"
+                      >
+                        {tour.price}
+                      </button>
+                    ) : null}
+                    <button
+                      type="button"
+                      onClick={() => setBookingTour(tour)}
+                      className="min-w-0 truncate rounded-lg bg-white px-2.5 py-2.5 text-center text-xs font-semibold text-black transition hover:bg-white/90 sm:text-sm"
+                    >
+                      {t.booking.cardCta}
+                    </button>
+                  </div>
                 </div>
-              </button>
+              </article>
             </FadeIn>
           ))}
         </div>
@@ -161,10 +179,17 @@ export function ToursSection() {
       </Container>
 
       <TourGalleryModal
-        open={Boolean(activeTour)}
-        onClose={() => setActiveTour(null)}
-        title={activeTour?.title ?? ''}
-        images={activeTour?.gallery ?? []}
+        open={Boolean(galleryTour)}
+        onClose={() => setGalleryTour(null)}
+        title={galleryTour?.title ?? ''}
+        images={galleryTour?.gallery ?? []}
+        withBooking
+      />
+
+      <TourBookingModal
+        open={Boolean(bookingTour)}
+        tourTitle={bookingTour?.title ?? ''}
+        onClose={() => setBookingTour(null)}
       />
     </section>
   );

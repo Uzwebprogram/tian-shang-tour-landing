@@ -3,8 +3,11 @@ import type { Plugin } from 'vite';
 
 type LeadBody = {
   name?: string;
+  lastName?: string;
   phone?: string;
   comment?: string;
+  tour?: string;
+  seats?: number | string;
 };
 
 function readBody(req: IncomingMessage): Promise<string> {
@@ -18,9 +21,9 @@ function readBody(req: IncomingMessage): Promise<string> {
 
 function escapeHtml(value: string): string {
   return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;');
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 async function handleContact(
@@ -64,8 +67,15 @@ async function handleContact(
     const raw = await readBody(req);
     const body = JSON.parse(raw) as LeadBody;
     const name = body.name?.trim() ?? '';
+    const lastName = body.lastName?.trim() ?? '';
     const phone = body.phone?.trim() ?? '';
     const comment = body.comment?.trim() ?? '';
+    const tour = body.tour?.trim() ?? '';
+    const seatsRaw = body.seats;
+    const seats =
+      seatsRaw === undefined || seatsRaw === ''
+        ? undefined
+        : Number(seatsRaw);
 
     if (!name || !phone) {
       res.statusCode = 400;
@@ -74,13 +84,20 @@ async function handleContact(
       return;
     }
 
-    const text = [
-      '🧭 <b>Yangi so‘rov — TIAN SHAN</b>',
+    const lines = [
+      tour
+        ? '🏔️ <b>Yangi tur bron — TIAN SHAN TRAVEL</b>'
+        : '🧭 <b>Yangi so‘rov — TIAN SHAN TRAVEL</b>',
       '',
-      `<b>Ism:</b> ${escapeHtml(name)}`,
-      `<b>Telefon:</b> ${escapeHtml(phone)}`,
-      `<b>Izoh:</b> ${escapeHtml(comment || '—')}`,
-    ].join('\n');
+    ];
+    if (tour) lines.push(`<b>Tur:</b> ${escapeHtml(tour)}`);
+    lines.push(`<b>Ism:</b> ${escapeHtml(name)}`);
+    if (lastName) lines.push(`<b>Familiya:</b> ${escapeHtml(lastName)}`);
+    lines.push(`<b>Telefon:</b> ${escapeHtml(phone)}`);
+    if (seats != null && !Number.isNaN(seats)) {
+      lines.push(`<b>Joylar:</b> ${seats}`);
+    }
+    if (comment) lines.push(`<b>Izoh:</b> ${escapeHtml(comment)}`);
 
     const telegramRes = await fetch(
       `https://api.telegram.org/bot${token}/sendMessage`,
@@ -89,7 +106,7 @@ async function handleContact(
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           chat_id: chatId,
-          text,
+          text: lines.join('\n'),
           parse_mode: 'HTML',
         }),
       },

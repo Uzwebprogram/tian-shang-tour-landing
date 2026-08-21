@@ -1,24 +1,44 @@
 export type LeadPayload = {
   name: string;
   phone: string;
-  comment: string;
+  comment?: string;
+  lastName?: string;
+  tour?: string;
+  seats?: number;
 };
 
-function formatTelegramMessage({ name, phone, comment }: LeadPayload): string {
-  return [
-    '🧭 <b>Yangi so‘rov — TIAN SHAN</b>',
+function formatTelegramMessage(payload: LeadPayload): string {
+  const {
+    name,
+    lastName,
+    phone,
+    comment,
+    tour,
+    seats,
+  } = payload;
+
+  const lines = [
+    tour
+      ? '🏔️ <b>Yangi tur bron — TIAN SHAN TRAVEL</b>'
+      : '🧭 <b>Yangi so‘rov — TIAN SHAN TRAVEL</b>',
     '',
-    `<b>Ism:</b> ${escapeHtml(name)}`,
-    `<b>Telefon:</b> ${escapeHtml(phone)}`,
-    `<b>Izoh:</b> ${escapeHtml(comment || '—')}`,
-  ].join('\n');
+  ];
+
+  if (tour) lines.push(`<b>Tur:</b> ${escapeHtml(tour)}`);
+  lines.push(`<b>Ism:</b> ${escapeHtml(name)}`);
+  if (lastName) lines.push(`<b>Familiya:</b> ${escapeHtml(lastName)}`);
+  lines.push(`<b>Telefon:</b> ${escapeHtml(phone)}`);
+  if (seats != null) lines.push(`<b>Joylar:</b> ${seats}`);
+  if (comment) lines.push(`<b>Izoh:</b> ${escapeHtml(comment)}`);
+
+  return lines.join('\n');
 }
 
 function escapeHtml(value: string): string {
   return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;');
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 async function sendViaProxy(payload: LeadPayload): Promise<boolean> {

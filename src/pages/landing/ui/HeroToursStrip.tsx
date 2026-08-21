@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowRight, User } from 'lucide-react';
 import { images, saryChelekGallery, almatyGallery, tajikistanGallery } from '@/pages/landing/model/catalog';
+import { TourBookingModal } from '@/pages/landing/ui/TourBookingModal';
 import { TourGalleryModal } from '@/pages/landing/ui/TourGalleryModal';
 import { useI18n } from '@/shared/i18n/I18nProvider';
 
@@ -13,7 +14,15 @@ type TourItem = {
   gallery?: readonly string[];
 };
 
-function OfferCard({ title, cta }: { title: string; cta: string }) {
+function OfferCard({
+  title,
+  cta,
+  onClick,
+}: {
+  title: string;
+  cta: string;
+  onClick: () => void;
+}) {
   return (
     <article className="relative flex h-[240px] w-[188px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl bg-[#1c1c1c] p-4 sm:h-[280px] sm:w-[210px] sm:p-5">
       <svg
@@ -37,13 +46,14 @@ function OfferCard({ title, cta }: { title: string; cta: string }) {
       <h3 className="relative max-w-[12ch] text-[15px] font-semibold leading-snug text-white sm:text-base">
         {title}
       </h3>
-      <a
-        href="#subscribe"
+      <button
+        type="button"
+        onClick={onClick}
         className="relative inline-flex w-fit items-center gap-1 rounded-full bg-white px-3 py-2 text-[11px] font-semibold text-black hover:bg-white/90"
       >
         {cta}
         <ArrowRight className="h-3 w-3" />
-      </a>
+      </button>
     </article>
   );
 }
@@ -53,14 +63,14 @@ function TourCard({
   onOpen,
 }: {
   tour: TourItem;
-  onOpen?: (tour: TourItem) => void;
+  onOpen: (tour: TourItem) => void;
 }) {
-  const interactive = Boolean(tour.gallery?.length && onOpen);
-  const className =
-    'group relative h-[240px] w-[188px] shrink-0 overflow-hidden rounded-2xl text-left sm:h-[280px] sm:w-[210px]';
-
-  const body = (
-    <>
+  return (
+    <button
+      type="button"
+      onClick={() => onOpen(tour)}
+      className="group relative h-[240px] w-[188px] shrink-0 overflow-hidden rounded-2xl text-left sm:h-[280px] sm:w-[210px]"
+    >
       <img
         src={tour.image}
         alt=""
@@ -75,36 +85,28 @@ function TourCard({
         <h3 className="text-sm font-semibold leading-snug text-white sm:text-[15px]">{tour.title}</h3>
         <p className="mt-1 text-[11px] leading-snug text-white/70">{tour.dates}</p>
       </div>
-    </>
+    </button>
   );
-
-  if (interactive) {
-    return (
-      <button type="button" className={className} onClick={() => onOpen?.(tour)}>
-        {body}
-      </button>
-    );
-  }
-
-  return <article className={className}>{body}</article>;
 }
 
 function CardRow({
   tours,
   offerTitle,
   offerCta,
-  onOpen,
+  onOpenTour,
+  onOffer,
 }: {
   tours: TourItem[];
   offerTitle: string;
   offerCta: string;
-  onOpen?: (tour: TourItem) => void;
+  onOpenTour: (tour: TourItem) => void;
+  onOffer: () => void;
 }) {
   return (
     <div className="flex gap-3 pr-3">
-      <OfferCard title={offerTitle} cta={offerCta} />
+      <OfferCard title={offerTitle} cta={offerCta} onClick={onOffer} />
       {tours.map((tour) => (
-        <TourCard key={tour.id} tour={tour} onOpen={onOpen} />
+        <TourCard key={tour.id} tour={tour} onOpen={onOpenTour} />
       ))}
     </div>
   );
@@ -113,6 +115,7 @@ function CardRow({
 export function HeroToursStrip() {
   const { t } = useI18n();
   const [activeTour, setActiveTour] = useState<TourItem | null>(null);
+  const [offerBooking, setOfferBooking] = useState(false);
 
   const tours: TourItem[] = [
     {
@@ -162,32 +165,41 @@ export function HeroToursStrip() {
     },
   ];
 
+  const galleryImages =
+    activeTour?.gallery && activeTour.gallery.length > 0
+      ? activeTour.gallery
+      : activeTour
+        ? [activeTour.image]
+        : [];
+
   return (
     <>
       <div className="flex items-stretch gap-3">
         <div className="min-w-0 flex-1 overflow-hidden md:overflow-x-auto md:pb-1 md:pr-2 md:[-ms-overflow-style:none] md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
           <div
-            className={`hero-tour-marquee flex w-max ${activeTour ? '[animation-play-state:paused]' : ''}`}
+            className={`hero-tour-marquee flex w-max ${activeTour || offerBooking ? '[animation-play-state:paused]' : ''}`}
           >
             <CardRow
               tours={tours}
               offerTitle={t.hero.offerTitle}
               offerCta={t.hero.offerCta}
-              onOpen={setActiveTour}
+              onOpenTour={setActiveTour}
+              onOffer={() => setOfferBooking(true)}
             />
             <div className="md:hidden" aria-hidden="true">
               <CardRow
                 tours={tours}
                 offerTitle={t.hero.offerTitle}
                 offerCta={t.hero.offerCta}
-                onOpen={setActiveTour}
+                onOpenTour={setActiveTour}
+                onOffer={() => setOfferBooking(true)}
               />
             </div>
           </div>
         </div>
 
         <a
-          href="#subscribe"
+          href="#tours"
           className="hidden shrink-0 items-center justify-center px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90 [writing-mode:vertical-rl] rotate-180 hover:text-white md:flex"
         >
           {t.tours.all}
@@ -195,10 +207,17 @@ export function HeroToursStrip() {
       </div>
 
       <TourGalleryModal
-        open={Boolean(activeTour?.gallery?.length)}
+        open={Boolean(activeTour)}
         onClose={() => setActiveTour(null)}
         title={activeTour?.title ?? ''}
-        images={activeTour?.gallery ?? []}
+        images={galleryImages}
+        withBooking
+      />
+
+      <TourBookingModal
+        open={offerBooking}
+        tourTitle={t.hero.offerTitle}
+        onClose={() => setOfferBooking(false)}
       />
     </>
   );

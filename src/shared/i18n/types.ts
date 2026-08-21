@@ -114,7 +114,13 @@ export type Messages = {
     sportTitle: string;
     sportText: string;
   };
-  partners: { title: string };
+  partners: {
+    title: string;
+    item1: string;
+    item2: string;
+    item3: string;
+    item4: string;
+  };
   press: {
     title: string;
     forbesTitle: string;
@@ -138,6 +144,29 @@ export type Messages = {
     modalTitle: string;
     modalText: string;
     modalClose: string;
+  };
+  booking: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    tourLabel: string;
+    firstNameLabel: string;
+    firstNamePlaceholder: string;
+    lastNameLabel: string;
+    lastNamePlaceholder: string;
+    phoneLabel: string;
+    phonePlaceholder: string;
+    seatsLabel: string;
+    seatsPlaceholder: string;
+    submit: string;
+    cardCta: string;
+    sending: string;
+    invalid: string;
+    sendError: string;
+    disclaimer: string;
+    successTitle: string;
+    successText: string;
+    close: string;
   };
   finalCta: {
     title: string;
