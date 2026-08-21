@@ -123,9 +123,12 @@ export type Messages = {
   };
   press: {
     title: string;
-    forbesTitle: string;
-    rbcTitle: string;
-    vedomostiTitle: string;
+    baikalTitle: string;
+    baikalText: string;
+    baikonurTitle: string;
+    baikonurText: string;
+    kamchatkaTitle: string;
+    kamchatkaText: string;
   };
   subscribe: {
     title: string;

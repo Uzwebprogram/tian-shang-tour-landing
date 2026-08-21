@@ -6,10 +6,22 @@ import { PartnerRow } from '@/pages/landing/ui/PartnerRow';
 
 export function PartnersPressSection() {
   const { t } = useI18n();
-  const articles = [
-    { image: images.forbes, outlet: 'Forbes', title: t.press.forbesTitle },
-    { image: images.rbc, outlet: 'RBC', title: t.press.rbcTitle },
-    { image: images.vedomosti, outlet: 'VEDOMOSTI', title: t.press.vedomostiTitle },
+  const expeditions = [
+    {
+      image: images.forbes,
+      title: t.press.baikalTitle,
+      text: t.press.baikalText,
+    },
+    {
+      image: images.rbc,
+      title: t.press.baikonurTitle,
+      text: t.press.baikonurText,
+    },
+    {
+      image: images.vedomosti,
+      title: t.press.kamchatkaTitle,
+      text: t.press.kamchatkaText,
+    },
   ];
 
   return (
@@ -18,24 +30,24 @@ export function PartnersPressSection() {
         <PartnerRow />
         <div>
           <FadeIn>
-            <h2 className="mb-10 font-serif text-4xl font-semibold text-brand-teal sm:mb-12 sm:text-5xl">
+            <h2 className="mb-10 font-serif text-4xl font-semibold text-[#7ec8cd] sm:mb-12 sm:text-5xl">
               {t.press.title}
             </h2>
           </FadeIn>
           <div className="grid gap-8 md:grid-cols-3">
-            {articles.map((article, index) => (
-              <FadeIn key={article.outlet} delay={index * 0.1}>
+            {expeditions.map((item, index) => (
+              <FadeIn key={item.title} delay={index * 0.1}>
                 <article className="flex h-full flex-col gap-4 rounded-3xl border border-brand-line bg-brand-card p-6">
                   <div className="overflow-hidden rounded-2xl bg-brand-dark">
                     <img
-                      src={article.image}
+                      src={item.image}
                       alt=""
                       className="h-48 w-full object-cover"
                       loading="lazy"
                     />
                   </div>
-                  <h3 className="font-serif text-2xl font-semibold text-white">{article.outlet}</h3>
-                  <p className="text-sm leading-relaxed text-brand-muted">{article.title}</p>
+                  <h3 className="font-serif text-2xl font-semibold text-white">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-brand-muted">{item.text}</p>
                 </article>
               </FadeIn>
             ))}

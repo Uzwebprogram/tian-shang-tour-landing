@@ -141,11 +141,16 @@ export const en: Messages = {
     item4: 'Comfortable travel, fully organized',
   },
   press: {
-    title: 'City, shopping, and winter sport',
-    forbesTitle: 'Bishkek: City & Shop tour — capital overview, Ala-Archa, Dordoi and Madina markets.',
-    rbcTitle: 'Khorgos (City & ICBC) — duty-free zone: electronics, brands, textiles.',
-    vedomostiTitle:
-      'Karakol: ski base, runs for every level, freeride, and Ak-Suu thermal pools.',
+    title: 'Long-range expeditions',
+    baikalTitle: 'Baikal: Heart of Siberia',
+    baikalText:
+      'A journey to the world’s deepest lake: Olkhon Island, Shaman Rock, boats and hovercraft, Buryat culture, and the sealarium. For wilderness lovers and seekers of sacred places.',
+    baikonurTitle: 'Baikonur: Legend of the space age',
+    baikonurText:
+      'An exclusive tour of the world’s first spaceport: rocket launch, Gagarin’s Pad, Buran, and the homes of Gagarin and Korolev. For science, space, and rare closed-access travel.',
+    kamchatkaTitle: 'Kamchatka: Land of volcanoes and the Pacific',
+    kamchatkaText:
+      'An expedition into volcanoes, geysers, and ocean winds: Avachinsky and Mutnovsky, Three Brothers, Khalaktyrsky Beach, and Paratunka springs. For trekking and sea adventures.',
   },
   subscribe: {
     title: 'Not sure which place to choose?',

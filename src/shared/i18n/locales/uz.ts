@@ -141,11 +141,16 @@ export const uz: Messages = {
     item4: 'Qulay sayohatlarni tashkil etish',
   },
   press: {
-    title: 'Siti, shopping va qishki sport',
-    forbesTitle: 'Bishkek: Siti & Shop-tur — poytaxt, Alo-Archa, «Dordoy» va «Madina» bozorlari.',
-    rbcTitle: 'Xorgos (Shahar & MSPS) — bojsiz zona: elektronika, brendlar, to‘qimachilik.',
-    vedomostiTitle:
-      'Qorako‘l: chang‘i bazasi, har qanday darajadagi trassalar, frirayd va Oq-Suu termal hovuzlari.',
+    title: 'Uzoq ekspeditsiyalar',
+    baikalTitle: 'Baykal: Sibir yuragi',
+    baikalText:
+      'Sayyoraning eng chuqur ko‘liga sayohat: Olxon oroli, Shaman qoyasi, kater va xiyuslar, buryat madaniyati. Yovvoyi tabiat va kuch joylari ixlosmandlari uchun.',
+    baikonurTitle: 'Baykonur: Kosmik era afsonasi',
+    baikonurText:
+      'Dunyoning birinchi kosmodromiga eksklyuziv tur: raketa starti, Gagarin starti, «Buran», Gagarin va Korolyov uylari. Fan, kosmos va yopiq tajriba sevuvchilar uchun.',
+    kamchatkaTitle: 'Kamchatka: Vulkanlar va Tinch okean cheti',
+    kamchatkaText:
+      'Vulkanlar, geyzerlar va okeanga ekspeditsiya: Avacha va Mutnovskiy, Uch Aka, Xalaktir plyaji va Paratunka termalari. Trekking va dengiz sarguzashtlari uchun.',
   },
   subscribe: {
     title: 'Qaysi lokatsiyani tanlashni bilmayapsizmi?',
