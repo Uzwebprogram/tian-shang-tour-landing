@@ -1,0 +1,93 @@
+/* app/styles/globals.css */
+/* Global stillar va Tailwind. Barcha ranglar CSS o'zgaruvchilarida. */
+
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0d6c75;
+  --color-mint: #68c7cb;
+  --color-sage: #79afaf;
+  --color-bg: #ffffff;
+  --color-text: #050505;
+  --color-dark: #111111;
+  --color-card: #1a1a1a;
+  --color-line: #333333;
+  --color-muted: #a3a3a3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.section-cv {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+.hero-title {
+  font-size: clamp(1.75rem, 1.05rem + 3.2vw, 4.5rem);
+}
+
+.hero-desc {
+  font-size: clamp(0.9375rem, 0.82rem + 0.55vw, 1.25rem);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes hero-tour-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.hero-tour-marquee {
+  animation: hero-tour-marquee 36s linear infinite;
+}
+
+.hero-tour-marquee:hover,
+.hero-tour-marquee:focus-within,
+.hero-tour-marquee:active {
+  animation-play-state: paused;
+}
+
+@media (min-width: 768px) {
+  .hero-tour-marquee {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tour-marquee {
+    animation: none;
+  }
+}
