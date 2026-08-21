@@ -1,7 +1,7 @@
 export const brand = {
   name: 'TIAN SHAN',
-  phone: '+7 (925) 900-90-00',
-  phoneHref: 'tel:+79259009000',
-  email: 'go@tianshan.travel',
-  emailHref: 'mailto:go@tianshan.travel',
+  phone: '+998 (78) 707 13 03',
+  phoneHref: 'tel:+998787071303',
+  email: '@tian_shan.travel',
+  emailHref: 'https://instagram.com/tian_shan.travel',
 } as const;

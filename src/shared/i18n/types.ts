@@ -105,6 +105,15 @@ export type Messages = {
     mikhailRole: string;
     konstantinRole: string;
   };
+  formats: {
+    title: string;
+    ecoTitle: string;
+    ecoText: string;
+    cityTitle: string;
+    cityText: string;
+    sportTitle: string;
+    sportText: string;
+  };
   partners: { title: string };
   press: {
     title: string;
@@ -130,6 +139,11 @@ export type Messages = {
     modalText: string;
     modalClose: string;
   };
+  finalCta: {
+    title: string;
+    subtitle: string;
+    cta: string;
+  };
   footer: {
     manifesto: string;
     tours: string;
@@ -137,6 +151,8 @@ export type Messages = {
     blog: string;
     phone: string;
     email: string;
+    addressLabel: string;
+    address: string;
     copyright: string;
     privacy: string;
     terms: string;

@@ -7,15 +7,128 @@
       name="description"
       content="Yopiq doira uchun eksklyuziv marshrutlar: xususiy jetlar, to‘liq maxfiylik va olomonni chetlab o‘tish imtiyozi."
     />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#050505" />
     <title>TIAN SHAN — tadbirkorlar uchun premium sayohatlar</title>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://images.unsplash.com" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #050505;
+      }
+      #boot-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        background: #050505;
+      }
+      #boot-splash svg {
+        width: auto;
+        height: 3.5rem;
+        opacity: 0;
+        animation: boot-logo-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
+      }
+      #boot-splash .boot-line {
+        width: min(180px, 40vw);
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(104, 199, 203, 0.9), transparent);
+        transform: scaleX(0);
+        animation: boot-line-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+      }
+      #boot-splash .boot-tag {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+        opacity: 0;
+        animation: boot-tag-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
+      }
+      @keyframes boot-logo-in {
+        from {
+          opacity: 0;
+          transform: scale(0.78);
+          filter: blur(8px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+          filter: blur(0);
+        }
+      }
+      @keyframes boot-line-in {
+        from {
+          transform: scaleX(0);
+          opacity: 0;
+        }
+        to {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+      }
+      @keyframes boot-tag-in {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="boot-splash" aria-hidden="true">
+      <svg viewBox="0 0 300 70" height="56" role="img" aria-label="TIAN SHAN Travel" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#FFFFFF" transform="translate(0 1.5) scale(0.64)">
+          <path
+            d="M45.5 0 L42.5 5.2 L40 10.4 L37.5 15.6 L35 20.8 L33 26 L30.5 31.3 L28 36.5 L25.5 41.7 L23 46.9 L20.5 52.1 L18 57.3 L16 62.5 L13.5 67.7 L11 72.9 L8.5 78.1 L6 83.3 L4 88.5 L1.5 93.8 L2.2 99.5 Q2.5 101 5.5 101 L9.5 101 Q12.2 100.2 13.8 96.2 L23.5 91.7 L32.5 88 L35.5 84.4 L37 80.7 L39 77.1 L40.5 73.4 L42.5 69.8 L44 66.2 L45.5 62.5 L47 58.9 L49 55.2 L51.5 51.6 L54.5 47.4 L57.5 43.8 L61.5 40.1 L65 36.5 L63.5 32.8 L62 29.2 L60 25.5 L58.5 21.9 L56.5 18.2 L55 14.6 L53 10.9 L51.5 7.3 L49.5 3.7 L47.5 0 Z"
+          />
+          <path
+            d="M66 39.1 L63 42.7 L60 46.9 L57.5 51 L55.5 54.7 L54 58.9 L52.5 63 L52 67.2 L52.5 70.8 L54.5 75 L56.5 79.2 L58.5 83.3 L60.5 87 L70 91.2 L80.5 95.3 L91 99.5 Q91.8 101 94.2 100.2 L95.2 97.5 L93.5 95.3 L91.5 91.2 L89.5 87 L88 83.3 L85.5 79.2 L83.5 75 L81.5 70.8 L80 67.2 L78 63 L76 58.9 L74 54.7 L72.5 51 L70.5 46.9 L68.5 42.7 L66.5 39.1 Z"
+          />
+        </g>
+        <line x1="78" y1="12" x2="78" y2="58" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" />
+        <text
+          x="92"
+          y="33"
+          fill="#FFFFFF"
+          font-family="system-ui, sans-serif"
+          font-size="22"
+          font-weight="700"
+          letter-spacing="0.06em"
+        >
+          TIAN SHAN
+        </text>
+        <text
+          x="92"
+          y="54"
+          fill="#FFFFFF"
+          font-family="system-ui, sans-serif"
+          font-size="11"
+          font-weight="500"
+          letter-spacing="0.48em"
+          textLength="148"
+          lengthAdjust="spacing"
+        >
+          TRAVEL
+        </text>
+      </svg>
+      <div class="boot-line"></div>
+      <p class="boot-tag">Central Asia</p>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

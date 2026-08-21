@@ -28,15 +28,6 @@ export function ToursSection() {
 
   const tours: SectionTour[] = [
     {
-      id: 'sary-chelek',
-      image: images.saryChelekCover,
-      title: t.tours.saryChelekTitle,
-      text: t.tours.saryChelekText,
-      duration: t.tours.saryChelekDuration,
-      price: t.tours.saryChelekPrice,
-      gallery: saryChelekGallery,
-    },
-    {
       id: 'almaty',
       image: images.almatyCover,
       title: t.tours.almatyTitle,
@@ -46,6 +37,33 @@ export function ToursSection() {
       gallery: almatyGallery,
     },
     {
+      id: 'sary-chelek',
+      image: images.saryChelekCover,
+      title: t.tours.saryChelekTitle,
+      text: t.tours.saryChelekText,
+      duration: t.tours.saryChelekDuration,
+      price: t.tours.saryChelekPrice,
+      gallery: saryChelekGallery,
+    },
+    {
+      id: 'kel-suu',
+      image: images.kamchatka,
+      title: t.tours.kamchatkaTitle,
+      text: t.tours.kamchatkaText,
+      duration: t.tours.kamchatkaDuration,
+      price: t.tours.kamchatkaPrice,
+      gallery: [],
+    },
+    {
+      id: 'issyk-kul',
+      image: images.transylvania,
+      title: t.tours.transylvaniaTitle,
+      text: t.tours.transylvaniaText,
+      duration: t.tours.transylvaniaDuration,
+      price: t.tours.transylvaniaPrice,
+      gallery: [],
+    },
+    {
       id: 'tajikistan',
       image: images.tajikistanCover,
       title: t.tours.tajikistanTitle,
@@ -53,6 +71,42 @@ export function ToursSection() {
       duration: t.tours.tajikistanDuration,
       price: t.tours.tajikistanPrice,
       gallery: tajikistanGallery,
+    },
+    {
+      id: 'mangystau',
+      image: images.porsche,
+      title: t.tours.porscheTitle,
+      text: t.tours.porscheText,
+      duration: t.tours.porscheDuration,
+      price: t.tours.porschePrice,
+      gallery: [],
+    },
+    {
+      id: 'altai',
+      image: images.safari,
+      title: t.tours.safariTitle,
+      text: t.tours.safariDates,
+      duration: t.tours.safariDates,
+      price: t.tours.safariSpots,
+      gallery: [],
+    },
+    {
+      id: 'turkestan',
+      image: images.china,
+      title: t.tours.chinaTitle,
+      text: t.tours.chinaDates,
+      duration: t.tours.chinaDates,
+      price: t.tours.chinaSpots,
+      gallery: [],
+    },
+    {
+      id: 'karakol',
+      image: images.ice,
+      title: t.tours.iceTitle,
+      text: t.tours.iceDates,
+      duration: t.tours.iceDates,
+      price: t.tours.iceSpots,
+      gallery: [],
     },
   ];
 
@@ -66,10 +120,13 @@ export function ToursSection() {
         </FadeIn>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {tours.map((tour, index) => (
-            <FadeIn key={tour.id} delay={index * 0.1}>
+            <FadeIn key={tour.id} delay={index * 0.05}>
               <button
                 type="button"
-                onClick={() => setActiveTour(tour)}
+                onClick={() => {
+                  if (tour.gallery.length) setActiveTour(tour);
+                  else window.location.hash = 'subscribe';
+                }}
                 className="group relative block h-[420px] w-full overflow-hidden rounded-3xl border border-brand-line bg-brand-card text-left sm:h-[460px]"
               >
                 <img
@@ -83,14 +140,11 @@ export function ToursSection() {
                   <CalendarDays className="h-2.5 w-2.5 text-brand-mint" />
                   {tour.duration}
                 </span>
-                <div className="absolute inset-x-0 bottom-0 space-y-2 p-8">
-                  <h3 className="font-serif text-2xl font-semibold text-white">{tour.title}</h3>
-                  <div className="flex items-end justify-between gap-4">
-                    <p className="max-w-[14rem] text-sm text-brand-muted">{tour.text}</p>
-                    <p className="shrink-0 text-right text-sm font-medium text-white sm:text-base">
-                      {tour.price}
-                    </p>
-                  </div>
+                <div className="absolute inset-x-0 bottom-0 space-y-3 p-6 sm:p-8">
+                  <h3 className="font-serif text-xl font-semibold leading-snug text-white sm:text-2xl">
+                    {tour.title}
+                  </h3>
+                  <p className="text-sm font-medium text-white/90 sm:text-base">{tour.price}</p>
                 </div>
               </button>
             </FadeIn>

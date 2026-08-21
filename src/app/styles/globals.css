@@ -50,11 +50,11 @@ body {
 }
 
 .hero-title {
-  font-size: clamp(1.75rem, 1.05rem + 3.2vw, 4.5rem);
+  font-size: clamp(1.5rem, 0.95rem + 2.2vw, 3.25rem);
 }
 
 .hero-desc {
-  font-size: clamp(0.9375rem, 0.82rem + 0.55vw, 1.25rem);
+  font-size: clamp(0.875rem, 0.8rem + 0.4vw, 1.0625rem);
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -89,5 +89,81 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .hero-tour-marquee {
     animation: none;
+  }
+}
+
+/* —— Logo intro splash —— */
+html.logo-intro-active,
+html.logo-intro-active body {
+  background: #050505 !important;
+}
+
+.logo-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  background: #050505;
+  pointer-events: all;
+}
+
+.logo-intro__glow {
+  position: absolute;
+  width: min(70vw, 420px);
+  height: min(70vw, 420px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(13, 108, 117, 0.35) 0%,
+    rgba(104, 199, 203, 0.12) 40%,
+    transparent 70%
+  );
+  filter: blur(8px);
+  animation: logo-intro-glow 2.2s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.logo-intro__mark {
+  position: relative;
+  z-index: 1;
+}
+
+.logo-intro__line {
+  position: relative;
+  z-index: 1;
+  width: min(180px, 40vw);
+  height: 1px;
+  transform-origin: center;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(104, 199, 203, 0.9),
+    transparent
+  );
+}
+
+.logo-intro__tag {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+@keyframes logo-intro-glow {
+  from {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.05);
   }
 }

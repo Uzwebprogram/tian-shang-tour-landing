@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, X } from 'lucide-react';
 import { useI18n } from '@/shared/i18n/I18nProvider';
@@ -32,11 +33,11 @@ export function TourGalleryModal({ open, onClose, title, images }: TourGalleryMo
     };
   }, [open, onClose]);
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-[100]"
+          className="fixed inset-0 z-[200]"
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -56,13 +57,13 @@ export function TourGalleryModal({ open, onClose, title, images }: TourGalleryMo
             <button
               type="button"
               onClick={onClose}
-              className="fixed right-3 top-3 z-[110] inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/70 px-4 py-2.5 text-sm font-semibold text-white shadow-lg backdrop-blur-md transition hover:bg-black/85 sm:right-5 sm:top-5"
+              className="fixed right-3 top-3 z-[210] inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/70 px-4 py-2.5 text-sm font-semibold text-white shadow-lg backdrop-blur-md transition hover:bg-black/85 sm:right-5 sm:top-5"
             >
               {t.tours.closeGallery}
               <X className="h-4 w-4" />
             </button>
 
-            <div className="pointer-events-none fixed inset-x-0 bottom-5 z-[110] flex items-center justify-center gap-3 px-4 sm:bottom-6">
+            <div className="pointer-events-none fixed inset-x-0 bottom-5 z-[210] flex items-center justify-center gap-3 px-4 sm:bottom-6">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-black/55 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-white/85 backdrop-blur-md">
                 {t.tours.scrollHint}
                 <ChevronDown className="h-3.5 w-3.5 animate-bounce" />
@@ -94,6 +95,7 @@ export function TourGalleryModal({ open, onClose, title, images }: TourGalleryMo
           </div>
         </motion.div>
       ) : null}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }

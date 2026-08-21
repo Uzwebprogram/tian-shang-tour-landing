@@ -44,12 +44,12 @@ export function HeroSection() {
 
       <Container className="relative z-10 flex min-h-[100svh] flex-col pb-5 pt-[108px] sm:pb-8 md:justify-center md:pb-10">
         <div className="flex flex-1 flex-col justify-center md:flex-none">
-          <div className="max-w-3xl text-left">
+          <div className="max-w-5xl text-left">
             <motion.h1
               initial={reduce ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-              className="hero-title whitespace-pre-line font-sans font-bold leading-[1.08] tracking-tight text-white"
+              className="hero-title whitespace-pre-line font-sans font-bold leading-[1.12] tracking-tight text-white"
             >
               {t.hero.title}
             </motion.h1>
@@ -57,7 +57,7 @@ export function HeroSection() {
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="hero-desc mt-4 max-w-xl text-left leading-relaxed text-white/80 sm:mt-5"
+              className="hero-desc mt-4 max-w-3xl text-left leading-relaxed text-white/80 sm:mt-5"
             >
               {t.hero.description}
             </motion.p>
@@ -65,7 +65,7 @@ export function HeroSection() {
               initial={reduce ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 inline-flex rounded-full bg-white px-4 py-2 text-sm font-medium text-black sm:mt-6 sm:px-5 sm:py-2.5 sm:text-base"
+              className="mt-5 inline-flex rounded-full bg-white px-4 py-2 text-xs font-medium text-black sm:mt-6 sm:px-5 sm:py-2.5 sm:text-sm"
             >
               {t.hero.groupTag}
             </motion.span>

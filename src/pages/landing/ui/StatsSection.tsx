@@ -48,7 +48,7 @@ export function StatsSection() {
           <div className="space-y-16">
             <FadeIn>
               <p className="font-serif text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl">
-                <CountUp to={10000} suffix="+" />
+                <CountUp to={14} suffix="+" />
               </p>
               <p className="mt-4 max-w-md text-lg text-black/70">{t.stats.travelersLabel}</p>
             </FadeIn>
