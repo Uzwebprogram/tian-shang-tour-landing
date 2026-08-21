@@ -92,6 +92,48 @@ body {
   }
 }
 
+@keyframes tours-marquee-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes tours-marquee-right {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.tours-marquee-left {
+  animation: tours-marquee-left 42s linear infinite;
+}
+
+.tours-marquee-right {
+  animation: tours-marquee-right 42s linear infinite;
+}
+
+.tours-marquee-left:hover,
+.tours-marquee-left:focus-within,
+.tours-marquee-left:active,
+.tours-marquee-right:hover,
+.tours-marquee-right:focus-within,
+.tours-marquee-right:active {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tours-marquee-left,
+  .tours-marquee-right {
+    animation: none;
+  }
+}
+
 /* —— Logo intro splash —— */
 html.logo-intro-active,
 html.logo-intro-active body {
