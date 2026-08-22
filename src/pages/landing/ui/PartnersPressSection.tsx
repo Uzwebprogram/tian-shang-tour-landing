@@ -25,7 +25,7 @@ export function PartnersPressSection() {
   ];
 
   return (
-    <section id="press" className="section-cv bg-white py-16 sm:py-24 xl:py-32">
+    <section id="press" className="section-cv border-y border-brand-line/50 bg-brand-dark py-16 sm:py-24 xl:py-32">
       <Container className="space-y-24 lg:space-y-32">
         <PartnerRow />
         <div>

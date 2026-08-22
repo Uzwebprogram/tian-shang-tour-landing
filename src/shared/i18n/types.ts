@@ -97,13 +97,18 @@ export type Messages = {
   };
   social: {
     title: string;
-    badgeEntrepreneur: string;
-    badgeBlogger: string;
-    badgeInvestor: string;
-    albertRole: string;
-    nikolayRole: string;
-    mikhailRole: string;
-    konstantinRole: string;
+    timurName: string;
+    timurRole: string;
+    azamatName: string;
+    azamatRole: string;
+    dilnozaName: string;
+    dilnozaRole: string;
+    akmalName: string;
+    akmalRole: string;
+    otabekName: string;
+    otabekRole: string;
+    solihaName: string;
+    solihaRole: string;
   };
   formats: {
     title: string;

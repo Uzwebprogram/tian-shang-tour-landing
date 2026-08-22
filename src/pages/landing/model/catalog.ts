@@ -13,14 +13,12 @@ export const images = {
     'https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=900&q=80',
   porsche:
     'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80',
-  albert:
-    'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80',
-  nikolay:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=700&q=80',
-  mikhail:
-    'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=700&q=80',
-  konstantin:
-    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80',
+  teamTimur: '/images/team/timur.png',
+  teamAzamat: '/images/team/azamat.png',
+  teamDilnoza: '/images/team/dilnoza.png',
+  teamAkmal: '/images/team/akmal.png',
+  teamOtabek: '/images/team/otabek.png',
+  teamSoliha: '/images/team/soliha.png',
   forbes:
     'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80',
   rbc: 'https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=900&q=80',
