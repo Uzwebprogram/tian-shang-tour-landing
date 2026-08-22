@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { ArrowRight, CalendarDays } from 'lucide-react';
 import {
   images,
@@ -9,7 +9,6 @@ import {
 import { TourBookingModal } from '@/pages/landing/ui/TourBookingModal';
 import { TourGalleryModal } from '@/pages/landing/ui/TourGalleryModal';
 import { useI18n } from '@/shared/i18n/I18nProvider';
-import { usePrefersReducedMotion } from '@/shared/hooks/usePrefersReducedMotion';
 import { Button } from '@/shared/ui/Button';
 import { Container } from '@/shared/ui/Container';
 import { FadeIn } from '@/shared/ui/FadeIn';
@@ -102,98 +101,32 @@ function MobileMarqueeRow({
   onBook: (tour: SectionTour) => void;
   bookLabel: string;
 }) {
-  const reduce = usePrefersReducedMotion();
-  const scrollerRef = useRef<HTMLDivElement>(null);
-  const userPausedRef = useRef(false);
-  const adjustingRef = useRef(false);
-  const resumeTimerRef = useRef<number | null>(null);
-  const loop = [...tours, ...tours];
-
-  useEffect(() => {
-    const el = scrollerRef.current;
-    if (!el || reduce) return;
-
-    // Start right-moving row near the midpoint so it can scroll "back" seamlessly.
-    if (direction === 'right') {
-      const half = el.scrollWidth / 2;
-      if (half > 0) {
-        adjustingRef.current = true;
-        el.scrollLeft = half;
-        adjustingRef.current = false;
-      }
-    }
-
-    let frame = 0;
-    const speed = 0.45;
-    const tick = () => {
-      if (!userPausedRef.current && !paused) {
-        const half = el.scrollWidth / 2;
-        if (half > 0) {
-          adjustingRef.current = true;
-          if (direction === 'left') {
-            el.scrollLeft += speed;
-            if (el.scrollLeft >= half) el.scrollLeft -= half;
-          } else {
-            el.scrollLeft -= speed;
-            if (el.scrollLeft <= 0) el.scrollLeft += half;
-          }
-          adjustingRef.current = false;
-        }
-      }
-      frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [direction, paused, reduce, tours.length]);
-
-  const pauseForUser = () => {
-    userPausedRef.current = true;
-    if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
-  };
-
-  const scheduleResume = () => {
-    if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = window.setTimeout(() => {
-      userPausedRef.current = false;
-    }, 1800);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
-    };
-  }, []);
+  const animClass = direction === 'right' ? 'tours-marquee-right' : 'tours-marquee-left';
 
   return (
-    <div
-      ref={scrollerRef}
-      className="no-scrollbar flex gap-3 overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]"
-      onPointerDown={pauseForUser}
-      onTouchStart={pauseForUser}
-      onPointerUp={scheduleResume}
-      onTouchEnd={scheduleResume}
-      onScroll={() => {
-        if (adjustingRef.current) return;
-        const el = scrollerRef.current;
-        if (!el || reduce) return;
-        const half = el.scrollWidth / 2;
-        if (half <= 0) return;
-        adjustingRef.current = true;
-        if (el.scrollLeft >= half) el.scrollLeft -= half;
-        else if (el.scrollLeft <= 1) el.scrollLeft += half;
-        adjustingRef.current = false;
-      }}
-    >
-      {loop.map((tour, index) => (
-        <TourCard
-          key={`${tour.id}-${index}`}
-          tour={tour}
-          onGallery={onGallery}
-          onBook={onBook}
-          bookLabel={bookLabel}
-          className="w-[58vw] max-w-[220px] shrink-0"
-        />
-      ))}
+    <div className="overflow-hidden">
+      <div
+        className={`${animClass} flex w-max ${paused ? '[animation-play-state:paused]' : ''}`}
+      >
+        {[0, 1].map((copy) => (
+          <div
+            key={copy}
+            className="flex gap-3 pr-3"
+            aria-hidden={copy === 1}
+          >
+            {tours.map((tour) => (
+              <TourCard
+                key={`${copy}-${tour.id}`}
+                tour={tour}
+                onGallery={onGallery}
+                onBook={onBook}
+                bookLabel={bookLabel}
+                className="w-[58vw] max-w-[220px] shrink-0"
+              />
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

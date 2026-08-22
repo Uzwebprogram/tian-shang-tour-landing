@@ -111,11 +111,11 @@ body {
 }
 
 .tours-marquee-left {
-  animation: tours-marquee-left 42s linear infinite;
+  animation: tours-marquee-left 32s linear infinite;
 }
 
 .tours-marquee-right {
-  animation: tours-marquee-right 42s linear infinite;
+  animation: tours-marquee-right 32s linear infinite;
 }
 
 .tours-marquee-left:hover,
