@@ -37,16 +37,16 @@ function formatLeadMessage(body: LeadBody) {
 
   const lines = [
     tour
-      ? '🏔️ <b>Yangi tur bron — TIAN SHAN TRAVEL</b>'
-      : '🧭 <b>Yangi so‘rov — TIAN SHAN TRAVEL</b>',
+      ? '🏔️ <b>Новая бронь тура — TIAN SHAN TRAVEL</b>'
+      : '🧭 <b>Новая заявка — TIAN SHAN TRAVEL</b>',
     '',
   ];
-  if (tour) lines.push(`<b>Tur:</b> ${escapeHtml(tour)}`);
-  lines.push(`<b>Ism:</b> ${escapeHtml(name)}`);
-  if (lastName) lines.push(`<b>Familiya:</b> ${escapeHtml(lastName)}`);
-  lines.push(`<b>Telefon:</b> ${escapeHtml(phone)}`);
-  if (seats != null && !Number.isNaN(seats)) lines.push(`<b>Joylar:</b> ${seats}`);
-  if (comment) lines.push(`<b>Izoh:</b> ${escapeHtml(comment)}`);
+  if (tour) lines.push(`<b>Тур:</b> ${escapeHtml(tour)}`);
+  lines.push(`<b>Имя:</b> ${escapeHtml(name)}`);
+  if (lastName) lines.push(`<b>Фамилия:</b> ${escapeHtml(lastName)}`);
+  lines.push(`<b>Телефон:</b> ${escapeHtml(phone)}`);
+  if (seats != null && !Number.isNaN(seats)) lines.push(`<b>Мест:</b> ${seats}`);
+  if (comment) lines.push(`<b>Комментарий:</b> ${escapeHtml(comment)}`);
   return lines.join('\n');
 }
 
