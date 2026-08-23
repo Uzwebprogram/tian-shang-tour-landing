@@ -80,12 +80,6 @@ body {
   animation-play-state: paused;
 }
 
-@media (min-width: 768px) {
-  .hero-tour-marquee {
-    animation: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero-tour-marquee {
     animation: none;

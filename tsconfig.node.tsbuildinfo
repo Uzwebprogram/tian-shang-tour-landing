@@ -1,1 +1,1 @@
-{"root":["./vite.config.ts","./plugins/telegramcontact.ts"],"version":"5.9.3"}
+{"root":["./vite.config.ts","./plugins/telegramcontact.ts","./lib/telegramcontact.ts","./api/contact.ts"],"version":"5.9.3"}

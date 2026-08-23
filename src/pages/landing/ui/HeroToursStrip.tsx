@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, User } from 'lucide-react';
 import { images, saryChelekGallery, almatyGallery, tajikistanGallery, altaiGallery, karakolGallery, turkestanGallery, khorgosGallery } from '@/pages/landing/model/catalog';
 import { TourBookingModal } from '@/pages/landing/ui/TourBookingModal';
 import { TourGalleryModal } from '@/pages/landing/ui/TourGalleryModal';
 import { useI18n } from '@/shared/i18n/I18nProvider';
+import { usePrefersReducedMotion } from '@/shared/hooks/usePrefersReducedMotion';
 
 type TourItem = {
   id: string;
@@ -90,12 +91,14 @@ function TourCard({
 }
 
 function CardRow({
+  copy,
   tours,
   offerTitle,
   offerCta,
   onOpenTour,
   onOffer,
 }: {
+  copy: number;
   tours: TourItem[];
   offerTitle: string;
   offerCta: string;
@@ -103,11 +106,122 @@ function CardRow({
   onOffer: () => void;
 }) {
   return (
-    <div className="flex gap-3 pr-3">
+    <div className="flex gap-3 pr-3" aria-hidden={copy === 1}>
       <OfferCard title={offerTitle} cta={offerCta} onClick={onOffer} />
       {tours.map((tour) => (
-        <TourCard key={tour.id} tour={tour} onOpen={onOpenTour} />
+        <TourCard key={`${copy}-${tour.id}`} tour={tour} onOpen={onOpenTour} />
       ))}
+    </div>
+  );
+}
+
+function HeroStripScroller({
+  tours,
+  offerTitle,
+  offerCta,
+  onOpenTour,
+  onOffer,
+  paused,
+}: {
+  tours: TourItem[];
+  offerTitle: string;
+  offerCta: string;
+  onOpenTour: (tour: TourItem) => void;
+  onOffer: () => void;
+  paused: boolean;
+}) {
+  const reduce = usePrefersReducedMotion();
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const userPausedRef = useRef(false);
+  const adjustingRef = useRef(false);
+  const resumeTimerRef = useRef<number | null>(null);
+  const pausedRef = useRef(paused);
+  pausedRef.current = paused;
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const loopWidth = () => el.scrollWidth / 2;
+
+    const wrap = () => {
+      const half = loopWidth();
+      if (half <= 0) return;
+      adjustingRef.current = true;
+      if (el.scrollLeft >= half) el.scrollLeft -= half;
+      else if (el.scrollLeft <= 0) el.scrollLeft += half;
+      adjustingRef.current = false;
+    };
+
+    let frame = 0;
+    const speed = 0.5;
+    const tick = () => {
+      if (!reduce && !userPausedRef.current && !pausedRef.current) {
+        const half = loopWidth();
+        if (half > 1) {
+          adjustingRef.current = true;
+          el.scrollLeft += speed;
+          if (el.scrollLeft >= half) el.scrollLeft -= half;
+          adjustingRef.current = false;
+        }
+      }
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+
+    const pause = () => {
+      userPausedRef.current = true;
+      if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
+    };
+    const resumeSoon = () => {
+      if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
+      resumeTimerRef.current = window.setTimeout(() => {
+        userPausedRef.current = false;
+      }, 1600);
+    };
+    const onScroll = () => {
+      if (!adjustingRef.current) wrap();
+    };
+
+    el.addEventListener('pointerdown', pause);
+    el.addEventListener('touchstart', pause, { passive: true });
+    el.addEventListener('wheel', pause, { passive: true });
+    el.addEventListener('pointerup', resumeSoon);
+    el.addEventListener('pointercancel', resumeSoon);
+    el.addEventListener('touchend', resumeSoon);
+    el.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(frame);
+      if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
+      el.removeEventListener('pointerdown', pause);
+      el.removeEventListener('touchstart', pause);
+      el.removeEventListener('wheel', pause);
+      el.removeEventListener('pointerup', resumeSoon);
+      el.removeEventListener('pointercancel', resumeSoon);
+      el.removeEventListener('touchend', resumeSoon);
+      el.removeEventListener('scroll', onScroll);
+    };
+  }, [reduce, tours.length]);
+
+  return (
+    <div
+      ref={scrollerRef}
+      className="no-scrollbar min-w-0 flex-1 cursor-grab overflow-x-auto overflow-y-hidden overscroll-x-contain pb-1 active:cursor-grabbing [-webkit-overflow-scrolling:touch]"
+    >
+      <div className="flex w-max">
+        {[0, 1].map((copy) => (
+          <CardRow
+            key={copy}
+            copy={copy}
+            tours={tours}
+            offerTitle={offerTitle}
+            offerCta={offerCta}
+            onOpenTour={onOpenTour}
+            onOffer={onOffer}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -186,28 +300,14 @@ export function HeroToursStrip() {
   return (
     <>
       <div className="flex items-stretch gap-3">
-        <div className="min-w-0 flex-1 overflow-hidden md:overflow-x-auto md:pb-1 md:pr-2 md:[-ms-overflow-style:none] md:[scrollbar-width:none] md:[&::-webkit-scrollbar]:hidden">
-          <div
-            className={`hero-tour-marquee flex w-max ${activeTour || offerBooking ? '[animation-play-state:paused]' : ''}`}
-          >
-            <CardRow
-              tours={tours}
-              offerTitle={t.hero.offerTitle}
-              offerCta={t.hero.offerCta}
-              onOpenTour={setActiveTour}
-              onOffer={() => setOfferBooking(true)}
-            />
-            <div className="md:hidden" aria-hidden="true">
-              <CardRow
-                tours={tours}
-                offerTitle={t.hero.offerTitle}
-                offerCta={t.hero.offerCta}
-                onOpenTour={setActiveTour}
-                onOffer={() => setOfferBooking(true)}
-              />
-            </div>
-          </div>
-        </div>
+        <HeroStripScroller
+          tours={tours}
+          offerTitle={t.hero.offerTitle}
+          offerCta={t.hero.offerCta}
+          onOpenTour={setActiveTour}
+          onOffer={() => setOfferBooking(true)}
+          paused={Boolean(activeTour || offerBooking)}
+        />
 
         <a
           href="#tours"
