@@ -86,6 +86,8 @@ export async function sendLeadToTelegram(
   );
 
   if (!telegramRes.ok) {
+    const detail = await telegramRes.text();
+    console.error('Telegram sendMessage failed', telegramRes.status, detail);
     return { ok: false, error: 'Telegram API error' };
   }
 
