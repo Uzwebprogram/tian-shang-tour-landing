@@ -3,7 +3,7 @@ export const locales = ['uz', 'ru', 'en'] as const;
 export type Locale = (typeof locales)[number];
 
 export type Messages = {
-  meta: { title: string; description: string };
+  meta: { title: string; description: string; keywords: string };
   nav: {
     tours: string;
     about: string;
@@ -94,6 +94,12 @@ export type Messages = {
     transylvaniaSpots: string;
     porscheDates: string;
     porscheSpots: string;
+    khorgosTitle: string;
+    khorgosText: string;
+    khorgosDates: string;
+    khorgosSpots: string;
+    khorgosDuration: string;
+    khorgosPrice: string;
   };
   social: {
     title: string;

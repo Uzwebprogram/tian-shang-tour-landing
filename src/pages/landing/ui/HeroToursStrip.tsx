@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight, User } from 'lucide-react';
-import { images, saryChelekGallery, almatyGallery, tajikistanGallery } from '@/pages/landing/model/catalog';
+import { images, saryChelekGallery, almatyGallery, tajikistanGallery, altaiGallery, karakolGallery, turkestanGallery, khorgosGallery } from '@/pages/landing/model/catalog';
 import { TourBookingModal } from '@/pages/landing/ui/TourBookingModal';
 import { TourGalleryModal } from '@/pages/landing/ui/TourGalleryModal';
 import { useI18n } from '@/shared/i18n/I18nProvider';
@@ -143,25 +143,36 @@ export function HeroToursStrip() {
       gallery: tajikistanGallery,
     },
     {
+      id: 'khorgos',
+      image: images.khorgosCover,
+      title: t.tours.khorgosTitle,
+      dates: t.tours.khorgosDates,
+      spots: t.tours.khorgosSpots,
+      gallery: khorgosGallery,
+    },
+    {
       id: 'safari',
-      image: images.safari,
+      image: images.altaiCover,
       title: t.tours.safariTitle,
       dates: t.tours.safariDates,
       spots: t.tours.safariSpots,
+      gallery: altaiGallery,
     },
     {
       id: 'china',
-      image: images.china,
+      image: images.turkestanCover,
       title: t.tours.chinaTitle,
       dates: t.tours.chinaDates,
       spots: t.tours.chinaSpots,
+      gallery: turkestanGallery,
     },
     {
       id: 'ice',
-      image: images.ice,
+      image: images.karakolCover,
       title: t.tours.iceTitle,
       dates: t.tours.iceDates,
       spots: t.tours.iceSpots,
+      gallery: karakolGallery,
     },
   ];
 

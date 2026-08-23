@@ -2,9 +2,11 @@ import type { Messages } from '@/shared/i18n/types';
 
 export const en: Messages = {
   meta: {
-    title: 'TIAN SHAN TRAVEL — curated tours across Central Asia',
+    title: 'TIAN SHAN TRAVEL — tours from Tashkent | Khorgos, Turkestan, Karakol, Almaty',
     description:
-      'Eco expeditions, city breaks, Khorgos shopping, and Karakol skiing. All-inclusive service from Tashkent.',
+      'Tours from Uzbekistan: Khorgos shopping, Turkestan, Mangystau, Altai, Karakol ski, Almaty and Sary-Chelek. Curated all-inclusive trips from Tashkent with 24/7 support.',
+    keywords:
+      'tours from Tashkent, tours from Uzbekistan, Khorgos tour, Turkestan tour, Karakol ski, Almaty tour, Mangystau, Altai expedition, Sary-Chelek, Tian Shan Travel',
   },
   nav: {
     tours: 'All destinations',
@@ -110,6 +112,13 @@ export const en: Messages = {
     transylvaniaSpots: 'View program',
     porscheDates: '4x4 Expedition',
     porscheSpots: 'View program',
+    khorgosTitle: 'Khorgos: shop city',
+    khorgosText:
+      'The major trade hub on the Kazakhstan–China border: ICBC, visa-free shopping, sleeper bus and a tour leader.',
+    khorgosDates: '3 days / 2 nights',
+    khorgosSpots: 'View program',
+    khorgosDuration: 'Shop & City',
+    khorgosPrice: 'View program',
   },
   social: {
     title: 'The Tian Shan Travel team',

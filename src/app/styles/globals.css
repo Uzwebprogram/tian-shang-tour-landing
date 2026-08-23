@@ -134,31 +134,6 @@ body {
   }
 }
 
-@keyframes team-marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.team-marquee {
-  animation: team-marquee 42s linear infinite;
-}
-
-.team-marquee:hover,
-.team-marquee:focus-within,
-.team-marquee:active {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .team-marquee {
-    animation: none;
-  }
-}
-
 /* —— Logo intro splash —— */
 html.logo-intro-active,
 html.logo-intro-active body {

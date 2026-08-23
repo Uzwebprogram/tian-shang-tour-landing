@@ -13,6 +13,11 @@ export const images = {
     'https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=900&q=80',
   porsche:
     'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80',
+  khorgosCover: '/images/tour/mangystau-01.webp',
+  mangystauCover: '/images/tour/altai-01.webp',
+  altaiCover: '/images/tour/karakol-01.webp',
+  karakolCover: '/images/tour/turkestan-06.webp',
+  turkestanCover: '/images/tour/turkestan-15.webp',
   teamTimur: '/images/team/timur.png',
   teamAzamat: '/images/team/azamat.png',
   teamDilnoza: '/images/team/dilnoza.png',
@@ -62,4 +67,58 @@ export const tajikistanGallery = [
   '/images/tour/tajikistan-02.png',
   '/images/tour/tajikistan-03.png',
   '/images/tour/tajikistan-04.png',
+] as const;
+
+export const khorgosGallery = [
+  '/images/tour/mangystau-01.webp',
+  '/images/tour/mangystau-02.webp',
+  '/images/tour/mangystau-03.webp',
+  '/images/tour/mangystau-04.webp',
+  '/images/tour/mangystau-05.webp',
+  '/images/tour/mangystau-06.webp',
+  '/images/tour/mangystau-07.webp',
+] as const;
+
+export const mangystauGallery = [
+  '/images/tour/altai-01.webp',
+  '/images/tour/altai-02.webp',
+  '/images/tour/altai-03.webp',
+  '/images/tour/altai-04.webp',
+  '/images/tour/altai-05.webp',
+  '/images/tour/altai-06.webp',
+  '/images/tour/altai-07.webp',
+  '/images/tour/altai-08.webp',
+  '/images/tour/altai-09.webp',
+] as const;
+
+export const altaiGallery = [
+  '/images/tour/karakol-01.webp',
+  '/images/tour/karakol-02.webp',
+  '/images/tour/karakol-03.webp',
+  '/images/tour/karakol-04.webp',
+  '/images/tour/karakol-05.webp',
+  '/images/tour/karakol-06.webp',
+  '/images/tour/karakol-07.webp',
+] as const;
+
+export const karakolGallery = [
+  '/images/tour/turkestan-06.webp',
+  '/images/tour/turkestan-01.webp',
+  '/images/tour/turkestan-02.webp',
+  '/images/tour/turkestan-03.webp',
+  '/images/tour/turkestan-04.webp',
+  '/images/tour/turkestan-05.webp',
+  '/images/tour/turkestan-07.webp',
+  '/images/tour/turkestan-08.webp',
+] as const;
+
+export const turkestanGallery = [
+  '/images/tour/turkestan-15.webp',
+  '/images/tour/turkestan-10.webp',
+  '/images/tour/turkestan-11.webp',
+  '/images/tour/turkestan-12.webp',
+  '/images/tour/turkestan-13.webp',
+  '/images/tour/turkestan-14.webp',
+  '/images/tour/turkestan-16.webp',
+  '/images/tour/turkestan-09.webp',
 ] as const;

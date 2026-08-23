@@ -10,6 +10,7 @@ import {
 import { en } from '@/shared/i18n/locales/en';
 import { ru } from '@/shared/i18n/locales/ru';
 import { uz } from '@/shared/i18n/locales/uz';
+import { applyDocumentSeo } from '@/shared/config/seo';
 import { locales, type Locale, type Messages } from '@/shared/i18n/types';
 
 const STORAGE_KEY = 'tianshan-locale';
@@ -50,12 +51,13 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    document.documentElement.lang = locale;
-    document.title = dictionaries[locale].meta.title;
-    const description = document.querySelector('meta[name="description"]');
-    if (description) {
-      description.setAttribute('content', dictionaries[locale].meta.description);
-    }
+    const meta = dictionaries[locale].meta;
+    applyDocumentSeo({
+      locale,
+      title: meta.title,
+      description: meta.description,
+      keywords: meta.keywords,
+    });
   }, [locale]);
 
   const value = useMemo<I18nContextValue>(

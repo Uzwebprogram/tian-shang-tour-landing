@@ -2,9 +2,11 @@ import type { Messages } from '@/shared/i18n/types';
 
 export const uz: Messages = {
   meta: {
-    title: 'TIAN SHAN TRAVEL — Markaziy Osiyo bo‘ylab mualliflik turlar',
+    title: 'TIAN SHAN TRAVEL — Toshkentdan turlar | Xorgos, Turkiston, Qorako‘l, Olmaota',
     description:
-      'Ekspeditsiyalar, siti-turlar, Xorgos shopping va Qorako‘l chang‘isi. Toshkentdan “hammasi qo‘shilgan” servis.',
+      'O‘zbekistondan turlar: Toshkentdan Xorgos shopping, Turkiston, Mang‘istov, Oltoy, Qorako‘l chang‘isi, Olmaota va Sari-Chelek. Mualliflik turlar, hammasi qo‘shilgan, 24/7 hamrohlik.',
+    keywords:
+      'turlar Toshkent, turlar O‘zbekiston, Xorgos tur, Turkiston tur, Qorako‘l chang‘i, Olmaota tur, Mang‘istov, Oltoy ekspeditsiya, Sari-Chelek, mualliflik turlar, Tian Shan Travel',
   },
   nav: {
     tours: 'Barcha yo‘nalishlar',
@@ -110,6 +112,13 @@ export const uz: Messages = {
     transylvaniaSpots: 'Dasturini ko‘rish',
     porscheDates: '4x4 Ekspeditsiya',
     porscheSpots: 'Dasturini ko‘rish',
+    khorgosTitle: 'Xorgos: shop-siti',
+    khorgosText:
+      'Qozog‘iston–Xitoy chegarasidagi yirik savdo markazi: MCPS, vizasiz shopping, yotoqli avtobus va hamrohlik.',
+    khorgosDates: '3 kun / 2 tun',
+    khorgosSpots: 'Dasturini ko‘rish',
+    khorgosDuration: 'Shop & Siti',
+    khorgosPrice: 'Dasturini ko‘rish',
   },
   social: {
     title: 'Tian Shan Travel jamoasi',
